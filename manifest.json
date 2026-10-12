@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Timer & Countdown",
+  "version": "1.0.0",
+  "description": "Countdown with an alarm, a stopwatch, and a history of every run.",
+  "browser_specific_settings": {
+    "gecko": { "id": "timer-countdown@example.com", "strict_min_version": "91.0" }
+  },
+  "icons": { "48": "icons/icon.svg", "96": "icons/icon.svg" },
+  "permissions": ["storage", "alarms", "notifications"],
+  "background": { "scripts": ["background.js"], "persistent": true },
+  "browser_action": {
+    "default_icon": "icons/icon.svg",
+    "default_title": "Timer & Countdown",
+    "default_popup": "popup/popup.html"
+  }
+}

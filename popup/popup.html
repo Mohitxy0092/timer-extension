@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Timer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" role="tab" data-tab="countdown">Countdown</button>
+    <button class="tab" role="tab" data-tab="stopwatch">Stopwatch</button>
+    <button class="tab" role="tab" data-tab="history">Spellbook</button>
+  </nav>
+
+  <div id="stage">
+    <canvas id="gl" aria-label="Timer dial"></canvas>
+    <div class="gems" role="radiogroup" aria-label="Colours">
+      <button class="gem" role="radio" data-house="scarlet" title="Scarlet &amp; gold" aria-label="Scarlet and gold"></button>
+      <button class="gem" role="radio" data-house="emerald" title="Emerald &amp; silver" aria-label="Emerald and silver"></button>
+      <button class="gem" role="radio" data-house="sapphire" title="Sapphire &amp; bronze" aria-label="Sapphire and bronze"></button>
+      <button class="gem" role="radio" data-house="amber" title="Amber &amp; pewter" aria-label="Amber and pewter"></button>
+    </div>
+    <div id="flat" hidden>
+      <div id="flat-time">00:00:00</div>
+      <div id="flat-sub"></div>
+      <div class="bar"><i id="flat-bar"></i></div>
+    </div>
+  </div>
+
+  <section id="countdown" class="panel">
+    <div id="cd-setup">
+      <div class="hms">
+        <label><input id="in-h" type="text" inputmode="numeric" maxlength="2" value="0" aria-label="Hours">hr</label>
+        <label><input id="in-m" type="text" inputmode="numeric" maxlength="3" value="5" aria-label="Minutes">min</label>
+        <label><input id="in-s" type="text" inputmode="numeric" maxlength="3" value="0" aria-label="Seconds">sec</label>
+      </div>
+      <div class="presets">
+        <button class="chip" data-sec="300">5m</button>
+        <button class="chip" data-sec="900">15m</button>
+        <button class="chip" data-sec="1800">30m</button>
+        <button class="chip" data-sec="3600">1h</button>
+        <button class="chip" data-sec="7200">2h</button>
+      </div>
+      <input id="cd-label" class="text" type="text" maxlength="40" placeholder="What are you brewing? (optional)">
+      <div class="row2">
+        <span id="cd-hint" role="status"></span>
+        <button id="test-sound" class="link">Ring the bell</button>
+      </div>
+    </div>
+    <div id="cd-info" class="info" hidden>
+      <div id="cd-status"></div>
+      <div id="cd-end" class="muted"></div>
+    </div>
+    <div class="actions">
+      <button id="cd-main" class="btn primary">Start</button>
+      <button id="cd-reset" class="btn" hidden>Reset</button>
+    </div>
+  </section>
+
+  <section id="stopwatch" class="panel" hidden>
+    <div class="info"><div class="muted">The ring sweeps once every minute.</div></div>
+    <div class="actions">
+      <button id="sw-main" class="btn primary">Start</button>
+      <button id="sw-reset" class="btn" disabled>Save &amp; reset</button>
+    </div>
+  </section>
+
+  <section id="history" class="panel" hidden>
+    <p id="hist-empty" class="empty">Your spellbook is empty. Finished countdowns and saved stopwatch runs are written here.</p>
+    <ul id="hist-list"></ul>
+    <button id="hist-clear" class="link" hidden>Clear history</button>
+  </section>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
